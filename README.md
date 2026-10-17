@@ -128,8 +128,8 @@ pnpm typecheck
 pnpm build      # package in dist/, demo in demo-dist/
 ```
 
-Releases are published to npm by GitHub Actions when a `v*` tag is pushed. The tag must match the
-version in `package.json`.
+Releases are staged on npm by GitHub Actions when a `v*` tag is pushed, and go live once approved
+on npmjs.com or with `npm stage approve`. The tag must match the version in `package.json`.
 
 The animation data in `src/data` is generated from clippy.js with `scripts/convert-clippy-agent.mjs`.
 
