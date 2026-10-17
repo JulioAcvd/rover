@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 
 const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
@@ -17,5 +17,10 @@ export default defineConfig(({ command }) => ({
     emptyOutDir: true,
     // XP.css ships selectors that lightningcss refuses to minify.
     cssMinify: false,
+  },
+  test: {
+    root: fromRoot("."),
+    environment: "jsdom",
+    include: ["tests/**/*.test.ts"],
   },
 }));

@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import "./element.js";
-import type { RoverState } from "./rover.js";
+import "../src/element.js";
+import type { RoverState } from "../src/rover.js";
 
 describe("<xp-rover>", () => {
   let element: HTMLElement;

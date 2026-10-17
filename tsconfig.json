@@ -33,6 +33,6 @@
     "src",
     "demo",
     "vite.config.ts",
-    "vitest.config.ts"
+    "tests"
   ]
 }
