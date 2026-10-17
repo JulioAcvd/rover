@@ -1,4 +1,4 @@
-import type { Animation, Frame } from "./types";
+import type { Animation, Frame } from "./types.js";
 
 export type EndReason = "completed";
 

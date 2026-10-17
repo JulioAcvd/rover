@@ -1,8 +1,7 @@
-import { createAnimator } from "./animator";
-import { roverAgent } from "./data/agent";
-import defaultSpriteUrl from "./data/map.png";
-import { createWebAudioSoundPlayer, type SoundPlayer } from "./sound-player";
-import type { AgentData, Frame } from "./types";
+import { createAnimator } from "./animator.js";
+import { roverAgent } from "./data/agent.js";
+import { createWebAudioSoundPlayer, type SoundPlayer } from "./sound-player.js";
+import type { AgentData, Frame } from "./types.js";
 
 const IDLE = "Idle";
 const HIDE_ANIMATIONS = new Set(["Hide", "HideQuick"]);
@@ -33,12 +32,12 @@ export interface Rover {
   destroy(): void;
 }
 
-export function createRover(container: HTMLElement, options: RoverOptions = {}): Rover {
+export function createRover(container: ParentNode, options: RoverOptions = {}): Rover {
   const agent: AgentData = options.agent ?? roverAgent;
   const {
-    spriteUrl = defaultSpriteUrl,
+    spriteUrl = new URL("./data/map.png", import.meta.url).href,
     scale = 1,
-    soundPlayer = createWebAudioSoundPlayer(() => import("./data/sounds").then((module) => module.roverSounds)),
+    soundPlayer = createWebAudioSoundPlayer(() => import("./data/sounds.js").then((module) => module.roverSounds)),
   } = options;
   let autoIdle = options.autoIdle ?? true;
   let muted = true;

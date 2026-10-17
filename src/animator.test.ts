@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createAnimator } from "./animator";
-import { roverAgent } from "./data/agent";
-import type { Animation } from "./types";
+import { createAnimator } from "./animator.js";
+import { roverAgent } from "./data/agent.js";
+import type { Animation } from "./types.js";
 
 const linear: Animation = {
   frames: [{ duration: 100 }, { duration: 200 }, { duration: 300 }],

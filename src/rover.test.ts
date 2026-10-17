@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createRover, type RoverOptions } from "./rover";
-import type { AgentData } from "./types";
+import { createRover, type RoverOptions } from "./rover.js";
+import type { AgentData } from "./types.js";
 
 const agent: AgentData = {
   framesize: [80, 80],

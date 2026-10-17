@@ -1,6 +1,6 @@
 import "xp.css/dist/XP.css";
 import "./demo.css";
-import { createRover, type RoverState } from "../rover";
+import { createRover, type RoverState } from "xp-rover";
 
 interface DemoAnimation {
   readonly name: string;
