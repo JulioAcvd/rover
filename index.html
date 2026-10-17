@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rover</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main class="desktop">
+      <div class="window companion">
+        <div class="title-bar">
+          <div class="title-bar-text">Search Companion — Rover</div>
+        </div>
+
+        <div class="window-body companion__body">
+          <nav class="task-pane" aria-labelledby="task-pane-heading">
+            <h1 id="task-pane-heading" class="task-pane__heading">What should Rover do?</h1>
+            <ul class="task-pane__list" id="animation-list"></ul>
+            <div class="task-pane__stage" id="rover-stage" role="button" tabindex="0" aria-label="Pat Rover"></div>
+          </nav>
+
+          <section class="controls" aria-label="Playback controls">
+            <fieldset>
+              <legend>Playback</legend>
+              <div class="controls__row">
+                <button type="button" id="finish-button">Finish</button>
+                <button type="button" id="stop-button">Stop</button>
+              </div>
+              <p class="controls__hint">Finish lets Rover wrap up the current animation. Stop freezes him on the spot.</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>Options</legend>
+              <div class="field-row">
+                <input type="checkbox" id="sound-toggle" />
+                <label for="sound-toggle">Play sounds</label>
+              </div>
+              <div class="field-row">
+                <input type="checkbox" id="idle-toggle" checked />
+                <label for="idle-toggle">Idle when nothing is playing</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="controls__keyboard">
+              <legend>Keyboard</legend>
+              <dl class="shortcuts">
+                <dt><kbd>1</kbd>–<kbd>0</kbd></dt>
+                <dd>Play the animation with that number</dd>
+                <dt><kbd>Esc</kbd></dt>
+                <dd>Finish the current animation</dd>
+              </dl>
+            </fieldset>
+          </section>
+        </div>
+
+        <div class="status-bar">
+          <p class="status-bar-field" id="status-animation" aria-live="polite">Ready</p>
+          <p class="status-bar-field status-bar-field--frame" id="status-frame">Frame –</p>
+          <p class="status-bar-field status-bar-field--sound" id="status-sound">Sound off</p>
+        </div>
+      </div>
+
+      <footer class="credits">
+        Rover © Microsoft. Animation data and sounds from
+        <a href="https://github.com/smore-inc/clippy.js">clippy.js</a> (MIT).
+      </footer>
+    </main>
+    <script type="module" src="/src/demo/main.ts"></script>
+  </body>
+</html>
