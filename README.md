@@ -8,6 +8,8 @@ Rover, the search companion dog from Windows XP, for any website.
 
 **[Live demo](https://julioacvd.github.io/rover/)**
 
+[![Rover playing animations picked from the demo's task pane](.github/assets/demo.gif)](https://julioacvd.github.io/rover/)
+
 ## Install
 
 ```sh
