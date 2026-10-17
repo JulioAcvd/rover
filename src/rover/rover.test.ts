@@ -73,6 +73,18 @@ describe("createRover", () => {
     expect(listener).toHaveBeenLastCalledWith({ animation: undefined, frameIndex: 0, frameCount: 2 });
   });
 
+  it("removes itself and goes quiet when destroyed", () => {
+    const rover = create({ autoIdle: true });
+    const listener = vi.fn();
+    rover.subscribe(listener);
+
+    rover.destroy();
+    vi.advanceTimersByTime(1000);
+
+    expect(container.childElementCount).toBe(0);
+    expect(listener).not.toHaveBeenCalled();
+  });
+
   describe("sound", () => {
     const fakeSoundPlayer = () => ({ enable: vi.fn(), play: vi.fn() });
 
@@ -145,6 +157,15 @@ describe("createRover", () => {
       vi.advanceTimersByTime(1000);
 
       expect(spritePosition()).toBe("-240px -80px");
+    });
+
+    it("ignores unknown animations instead of getting stuck", () => {
+      const rover = create({ autoIdle: true });
+
+      rover.play("Fetch");
+      vi.advanceTimersByTime(1000);
+
+      expect(spritePosition()).toBe("0px 0px");
     });
 
     it("stays frozen after a stop instead of idling", () => {

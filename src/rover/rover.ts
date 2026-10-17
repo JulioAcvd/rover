@@ -7,12 +7,14 @@ import type { AgentData, Frame } from "./types";
 const IDLE = "Idle";
 const HIDE_ANIMATIONS = new Set(["Hide", "HideQuick"]);
 
+export type RoverAnimationName = keyof typeof roverAgent.animations;
+
 export interface RoverOptions {
-  readonly agent: AgentData;
-  readonly spriteUrl: string;
-  readonly scale: number;
-  readonly autoIdle: boolean;
-  readonly soundPlayer: SoundPlayer;
+  readonly agent?: AgentData;
+  readonly spriteUrl?: string;
+  readonly scale?: number;
+  readonly autoIdle?: boolean;
+  readonly soundPlayer?: SoundPlayer;
 }
 
 export interface RoverState {
@@ -22,15 +24,16 @@ export interface RoverState {
 }
 
 export interface Rover {
-  play(name: string): void;
+  play(name: RoverAnimationName | (string & {})): void;
   exit(): void;
   stop(): void;
   setAutoIdle(enabled: boolean): void;
   setMuted(muted: boolean): void;
   subscribe(listener: (state: RoverState) => void): () => void;
+  destroy(): void;
 }
 
-export function createRover(container: HTMLElement, options: Partial<RoverOptions> = {}): Rover {
+export function createRover(container: HTMLElement, options: RoverOptions = {}): Rover {
   const agent: AgentData = options.agent ?? roverAgent;
   const {
     spriteUrl = defaultSpriteUrl,
@@ -43,6 +46,8 @@ export function createRover(container: HTMLElement, options: Partial<RoverOption
 
   const root = document.createElement("div");
   root.className = "rover";
+  root.setAttribute("role", "img");
+  root.setAttribute("aria-label", "Rover the dog");
   root.style.width = `${width * scale}px`;
   root.style.height = `${height * scale}px`;
 
@@ -97,6 +102,7 @@ export function createRover(container: HTMLElement, options: Partial<RoverOption
 
   return {
     play(name) {
+      if (!Object.hasOwn(agent.animations, name)) return;
       if (current !== IDLE) return start(name);
       queued = name;
       animator.exit();
@@ -122,6 +128,12 @@ export function createRover(container: HTMLElement, options: Partial<RoverOption
     subscribe(listener) {
       listeners.add(listener);
       return () => listeners.delete(listener);
+    },
+    destroy() {
+      animator.stop();
+      listeners.clear();
+      soundPlayer.dispose?.();
+      root.remove();
     },
   };
 }
