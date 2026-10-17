@@ -1,8 +1,5 @@
 :root {
-  --sky-top: #2f6fd8;
-  --sky-bottom: #a9cff5;
-  --hill: #3f8f2a;
-  --hill-light: #6cb63c;
+  --sky: #2f6fd8;
   --pane-top: #7ba2e7;
   --pane-bottom: #6375d6;
   --link: #215dc6;
@@ -47,7 +44,7 @@ body {
 }
 
 body {
-  background: var(--sky-top);
+  background: var(--sky);
   font-family: var(--font-ui);
 }
 
@@ -58,10 +55,7 @@ body {
   align-content: center;
   gap: 16px;
   padding: 32px 16px;
-  background:
-    radial-gradient(140% 55% at 30% 100%, var(--hill-light) 0 38%, transparent 38.5%),
-    radial-gradient(120% 50% at 85% 105%, var(--hill) 0 40%, transparent 40.5%),
-    linear-gradient(var(--sky-top), var(--sky-bottom) 70%);
+  background: var(--sky) url("./assets/bliss.webp") center / cover no-repeat;
 }
 
 .companion {
