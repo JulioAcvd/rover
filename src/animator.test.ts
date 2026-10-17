@@ -143,12 +143,13 @@ describe("createAnimator", () => {
   });
 
   describe("with Rover's animation data", () => {
-    const demoAnimations = [
-      "RestPose", "Show", "Hide", "Greet", "Idle", "Searching",
-      "Thinking", "GetAttention", "ClickedOn", "Pleased", "Acknowledge",
-    ];
+    const animationNames = Object.keys(roverAgent.animations);
 
-    it.each(demoAnimations.flatMap((name) => [0, 0.5, 0.999].map((roll) => ({ name, roll }))))(
+    it("includes all 29 of Rover's animations", () => {
+      expect(animationNames).toHaveLength(29);
+    });
+
+    it.each(animationNames.flatMap((name) => [0, 0.5, 0.999].map((roll) => ({ name, roll }))))(
       "$name completes within a minute after exit (roll $roll)",
       ({ name, roll }) => {
         const onEnd = vi.fn();
