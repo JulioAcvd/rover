@@ -6,7 +6,7 @@
   --link-hover: #428eff;
   --surface: #ffffff;
   --ink: #000000;
-  --font-ui: Tahoma, "Wine Tahoma", Verdana, sans-serif;
+  --font-ui: "Pixelated MS Sans Serif", Tahoma, sans-serif;
   --font-title: "Trebuchet MS", Tahoma, sans-serif;
 }
 
@@ -84,7 +84,7 @@ body {
   background: linear-gradient(90deg, var(--surface), #c6d3f7);
   color: var(--link);
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .task-pane__list {
@@ -135,7 +135,7 @@ body {
   margin-left: auto;
   color: inherit;
   opacity: 0.6;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .task-pane__stage {
